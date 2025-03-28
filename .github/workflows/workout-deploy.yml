@@ -24,5 +24,8 @@ jobs:
     - name: Install dependencies
       run: npm install
 
+    - name: Build the application
+      run: npm run build # Assuming you have a build script in your package.json
+
     - name: Run ESLint
       run: npx eslint . --fix
