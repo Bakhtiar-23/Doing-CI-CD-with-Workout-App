@@ -1,20 +1,40 @@
-import knex from 'knex';  // Default import
+import mongoose from 'mongoose';
 
-export const up = async function (knex) {
-  return knex.schema
-    .createTable('workouts', (table) => {
-      table.increments('id').primary();
-      table.string('name').notNullable();
-    })
-    .createTable('workouts_exercises', (table) => {
-      table.increments('id').primary();
-      table.integer('workout_id').unsigned().references('id').inTable('workouts');
-      table.string('exercise').notNullable();
-    });
+// Define schema for workouts
+const workoutSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+});
+
+// Define schema for workouts_exercises
+const workoutExerciseSchema = new mongoose.Schema({
+  workout_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Workout', required: true },
+  exercise: { type: String, required: true },
+});
+
+// Create models
+const Workout = mongoose.model('Workout', workoutSchema);
+const WorkoutExercise = mongoose.model('WorkoutExercise', workoutExerciseSchema);
+
+// Migration up function
+export const up = async function () {
+  try {
+    // Create collections (MongoDB handles collections automatically when a model is defined)
+    await Workout.createIndexes();
+    await WorkoutExercise.createIndexes();
+    console.log('Migration up: Tables created');
+  } catch (error) {
+    console.error('Error running migration up:', error);
+  }
 };
 
-export const down = async function (knex) {
-  return knex.schema
-    .dropTableIfExists('workouts_exercises')
-    .dropTableIfExists('workouts');
+// Migration down function
+export const down = async function () {
+  try {
+    // Drop collections
+    await Workout.collection.drop();
+    await WorkoutExercise.collection.drop();
+    console.log('Migration down: Tables dropped');
+  } catch (error) {
+    console.error('Error running migration down:', error);
+  }
 };
