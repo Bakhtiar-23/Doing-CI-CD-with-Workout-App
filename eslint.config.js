@@ -1,17 +1,38 @@
 import { defineConfig } from "eslint/config";
 import globals from "globals";
+import js from "@eslint/js";
 
 export default defineConfig([
   {
+    ignores: ["node_modules"], // Ignoring node_modules folder
+  },
+  {
+    // Browser environment
     files: ["**/*.{js,mjs,cjs}"],
+    languageOptions: { globals: globals.browser },
+  },
+  {
+    // JS plugin and recommended settings
+    files: ["**/*.{js,mjs,cjs}"],
+    plugins: { js },
+    extends: ["js/recommended"],
+  },
+  {
+    // Jest environment configuration
+    files: ["**/*.test.js", "**/*.spec.js"],
     languageOptions: {
       globals: {
-        ...globals.browser, // Use the browser globals
+        ...globals.jest,
       },
     },
   },
   {
-    files: ["**/*.{js,mjs,cjs}"],
-    extends: ["eslint:recommended"], // Use ESLint's built-in recommended configuration
+    // Node.js environment configuration
+    files: ["**/*.js", "**/*.mjs", "**/*.cjs"],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
+    },
   },
 ]);
