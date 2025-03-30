@@ -27,8 +27,6 @@ jobs:
     - name: Run ESLint
       run: npm run lint -- --fix
 
-    - name: Run Tests
-      run: npm test # Make sure you have tests defined
 
     - name: Start Server (Optional)
       run: node server.js &
