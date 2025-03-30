@@ -19,13 +19,16 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '23.7'
+        node-version: '20.x' # Use the latest stable LTS version
 
     - name: Install dependencies
       run: npm install
 
-    - name: Build the application
-      run: npm run build # Assuming you have a build script in your package.json
-
     - name: Run ESLint
       run: npx eslint . --fix
+
+    - name: Run Tests
+      run: npm test # Make sure you have tests defined
+
+    - name: Start Server (Optional)
+      run: node server.js &
