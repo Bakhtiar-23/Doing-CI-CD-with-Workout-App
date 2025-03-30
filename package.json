@@ -5,7 +5,7 @@
     "main": "server.js",
     "type": "module",
     "scripts": {
-        "test": "jest --detectOpenHandles --runInBand",
+        "test": "NODE_ENV=test jest --detectOpenHandles --runInBand",
         "lint": "eslint .",
         "prepare": "husky install"
     },
