@@ -8,7 +8,7 @@ let server;
 let PORT;
 
 beforeAll(async () => {
-  PORT = 3000 + Math.floor(Math.random() * 1000);
+  PORT = Math.floor(3000 + Math.random() * 1000); // Choose a random available port
   console.log(`Using port: ${PORT}`);
 
   server = createServer(app);
@@ -57,7 +57,7 @@ describe('Workout API End-to-End Tests', () => {
   beforeEach(async () => {
     // Create a workout entry before each test
     const workout = await mongoose.model('Workout').create({
-      username: 'john_doe', // You can set the username as needed
+      username: 'john_doe',
       exercises: [],
     });
     workoutId = workout._id;
@@ -66,7 +66,7 @@ describe('Workout API End-to-End Tests', () => {
 
   test('should add an exercise to the workout', async () => {
     const exercise = { name: 'Push-up', sets: 3, reps: 10 };
-  
+
     try {
       const response = await axios.post(
         `http://localhost:${PORT}/api/workouts/${workoutId}/exercises`,
@@ -80,19 +80,18 @@ describe('Workout API End-to-End Tests', () => {
       throw error; // Re-throw to fail the test
     }
   });
-  
 
   test('should remove an exercise from the workout', async () => {
     const exercise = { name: 'Push-up', sets: 3, reps: 10 };
-  
+
     // First, add an exercise so we can remove it later
     await axios.post(
       `http://localhost:${PORT}/api/workouts/${workoutId}/exercises`,
       { exercise }
     );
-  
+
     console.log(`Attempting to remove exercise: ${exercise.name} from workout: ${workoutId}`);
-  
+
     try {
       const response = await axios.delete(
         `http://localhost:${PORT}/api/workouts/${workoutId}/exercises/${exercise.name}`
@@ -105,6 +104,4 @@ describe('Workout API End-to-End Tests', () => {
       throw error; // Fail the test if there's an error
     }
   });
-  
-  
 });
