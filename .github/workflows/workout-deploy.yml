@@ -25,7 +25,7 @@ jobs:
       run: npm install
 
     - name: Run ESLint
-      run: npx eslint . --fix
+      run: npm run lint -- --fix
 
     - name: Run Tests
       run: npm test # Make sure you have tests defined

@@ -9,7 +9,11 @@ export default defineConfig([
   {
     // Browser environment
     files: ["**/*.{js,mjs,cjs}"],
-    languageOptions: { globals: globals.browser },
+    languageOptions: {
+      globals: {
+        AudioWorkletGlobalScope: true,
+      },
+    },
   },
   {
     // JS plugin and recommended settings
