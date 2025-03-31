@@ -30,7 +30,7 @@ jobs:
     - name: Start MongoDB
       uses: supercharge/mongodb-github-action@1.12.0
       with:
-        mongodb-version: '6.0.18'  
+        mongodb-version: '6.0.18'
         mongodb-replica-set: test-rs
         mongodb-port: 27017
 
@@ -41,14 +41,15 @@ jobs:
       run: node server.js &
 
     - name: Generate static files (Build)
-      run: npm run build
+      run: npm run build  
 
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@4.2.1
       with:
-        branch: gh-pages  
-        folder: ./build   
+        branch: gh-pages
+        folder: ./build
         clean: true
+        token: ${{ secrets.GH_TOKEN }}  # Reference the token secret here
 
     - name: Notify on success
       run: echo "Deployment to GitHub Pages successful!"
