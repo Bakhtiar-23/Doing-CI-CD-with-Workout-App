@@ -18,7 +18,6 @@ if (mongoose.connection.readyState === 0) {
     .catch((err) => console.error('MongoDB connection error:', err));
 }
 
-// ✅ Add a new route to get all workouts
 router.get('/workouts', async (req, res) => {
   try {
     const workouts = await workout.getAllWorkouts(); // Ensure this function exists
