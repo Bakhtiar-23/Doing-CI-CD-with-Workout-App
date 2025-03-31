@@ -27,10 +27,10 @@ jobs:
     - name: Run ESLint
       run: npm run lint -- --fix
 
-    - name: Start MongoDB
+      - name: Start MongoDB
       uses: supercharge/mongodb-github-action@1.12.0
       with:
-        mongodb-version: ${{ matrix.mongodb-version }}
+        mongodb-version: '6.0.18'  
         mongodb-replica-set: test-rs
         mongodb-port: 27017
 
