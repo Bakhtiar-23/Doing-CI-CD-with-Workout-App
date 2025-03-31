@@ -1,0 +1,21 @@
+const fs = require('fs');
+const path = require('path');
+
+const buildDir = path.join(__dirname, 'build');
+if (!fs.existsSync(buildDir)){
+    fs.mkdirSync(buildDir);
+}
+
+const htmlContent = `
+  <html>
+    <head>
+      <title>My Node.js App</title>
+    </head>
+    <body>
+      <h1>Hello from Node.js!</h1>
+      <p>Welcome to my app deployed on GitHub Pages.</p>
+    </body>
+  </html>
+`;
+
+fs.writeFileSync(path.join(buildDir, 'index.html'), htmlContent);
