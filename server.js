@@ -18,7 +18,15 @@ if (mongoose.connection.readyState === 0) {
     .catch((err) => console.error('MongoDB connection error:', err));
 }
 
-// API Routes
+// ✅ Add a new route to get all workouts
+router.get('/workouts', async (req, res) => {
+  try {
+    const workouts = await workout.getAllWorkouts(); // Ensure this function exists
+    res.status(200).json(workouts);
+  } catch (error) {
+    res.status(500).json({ message: 'Error retrieving workouts', error: error.message });
+  }
+});
 
 // Create a workout
 router.post('/workouts/:id/exercises', async (req, res) => {
