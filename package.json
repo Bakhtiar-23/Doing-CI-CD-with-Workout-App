@@ -8,7 +8,7 @@
         "test": "NODE_ENV=test jest --detectOpenHandles --runInBand",
         "lint": "eslint controllers/*.js models/*.js routes/*.js server.js",
         "prepare": "husky install",
-        "build": "echo 'Preparing app for production'"
+        "build": "echo 'Preparing app for GitHub Pages' && mkdir -p build && echo '<h1>Hello, GitHub Pages!</h1>' > build/index.html"
     },
     "keywords": [],
     "author": "",

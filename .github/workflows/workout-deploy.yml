@@ -40,10 +40,15 @@ jobs:
     - name: Start Server (Optional)
       run: node server.js &
 
+      - name: Generate static files (Build)
+      run: npm run build  
+
     - name: Deploy to GitHub Pages
-      if: github.ref == 'refs/heads/main'  # Ensures deploy only happens from main branch
       uses: JamesIves/github-pages-deploy-action@4.2.1
       with:
         branch: gh-pages  
         folder: ./build   
-        token: ${{ secrets.GITHUB_TOKEN }}
+        clean: true       
+
+    - name: Notify on success
+      run: echo "Deployment to GitHub Pages successful!"
