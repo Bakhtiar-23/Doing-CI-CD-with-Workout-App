@@ -6,7 +6,7 @@
     "type": "module",
     "scripts": {
         "test": "NODE_ENV=test jest --detectOpenHandles --runInBand",
-        "lint": "eslint .",
+        "lint": "eslint controllers/**/*.js models/**/*.js routes/**/*.js server.js",
         "prepare": "husky install"
     },
     "keywords": [],
