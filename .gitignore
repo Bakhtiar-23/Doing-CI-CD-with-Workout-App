@@ -1,9 +1,0 @@
-node_modules
-.env
-workout-dev.sqlite
-npm-debug.log
-package-lock.json
-
-# Logs
-*.log
-logs/
