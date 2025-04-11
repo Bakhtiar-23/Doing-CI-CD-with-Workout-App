@@ -1,8 +1,5 @@
+<h1>Workout App!</h1>
 
-<h1>Hello, GitHub Pages!</h1>
-
-const fs = require('fs'); const path = require('path'); const buildDir = path.join(__dirname,
-'build'); if (!fs.existsSync(buildDir)) { fs.mkdirSync(buildDir); } const htmlContent = `
 <html>
   <head>
     <title>My Workout App</title>
@@ -56,4 +53,3 @@ const fs = require('fs'); const path = require('path'); const buildDir = path.jo
     </footer>
   </body>
 </html>
-`; fs.writeFileSync(path.join(buildDir, 'index.html'), htmlContent);
