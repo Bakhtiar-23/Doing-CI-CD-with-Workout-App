@@ -36,7 +36,7 @@
         "tmpl": "^1.0.5"
     },
     "lint-staged": {
-    "**/*.{js, html, CSS}": "prettier --write",
+    "**/*.{js,html,css}": "prettier --write",
     "**/*.js": "eslint --max-warnings=0"
     }
 }
