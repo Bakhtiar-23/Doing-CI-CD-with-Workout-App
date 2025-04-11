@@ -1,12 +1,5 @@
-const fs = require('fs');
-const path = require('path');
 
-const buildDir = path.join(__dirname, 'build');
-if (!fs.existsSync(buildDir)) {
-    fs.mkdirSync(buildDir);
-}
 
-const htmlContent = `
   <html>
     <head>
       <title>My Workout App</title>
@@ -50,6 +43,6 @@ const htmlContent = `
       </footer>
     </body>
   </html>
-`;
 
-fs.writeFileSync(path.join(buildDir, 'index.html'), htmlContent);
+
+
