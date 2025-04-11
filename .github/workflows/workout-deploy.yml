@@ -43,6 +43,9 @@ jobs:
     - name: Generate static files (Build)
       run: npm run build  
 
+    - name: Set deployment version
+      run: echo "DEPLOY_VERSION=1.0.0" >> $GITHUB_ENV  # Setting an environment variable
+
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@4.2.1
       with:
@@ -52,4 +55,4 @@ jobs:
         token: ${{ secrets.GH_TOKEN }}  # Reference the token secret here
 
     - name: Notify on success
-      run: echo "Deployment to GitHub Pages successful!"
+      run: echo "Deployment to GitHub Pages successful! Version: $DEPLOY_VERSION"
