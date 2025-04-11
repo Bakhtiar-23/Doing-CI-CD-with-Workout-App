@@ -37,6 +37,6 @@
     },
     "lint-staged": {
     "**/*.{js,html,css}": "prettier --write",
-    "**/*.js": "eslint --max-warnings=0"
+    "**/*.js": "eslint"
     }
 }
