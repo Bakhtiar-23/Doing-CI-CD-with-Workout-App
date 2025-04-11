@@ -9,6 +9,9 @@ const app = express();
 const router = express.Router();
 app.use(express.json());
 
+console.log('Bakhtiar')
+Var a;
+
 // MongoDB Connection
 const mongoURI = process.env.MONGO_URI || 'mongodb://localhost:27017/workoutDB';
 if (mongoose.connection.readyState === 0) {
