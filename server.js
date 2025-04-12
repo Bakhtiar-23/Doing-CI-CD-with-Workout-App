@@ -3,6 +3,8 @@ import workout from './controllers/workoutController.js';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
+console.log('Assignment6 CI/CD.');
+
 dotenv.config();
 
 const app = express();
